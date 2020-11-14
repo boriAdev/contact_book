@@ -1,4 +1,5 @@
 ''' Contact Book Application'''
+from contact_book import *
 
 if __name__=="__main__":
 
