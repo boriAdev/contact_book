@@ -1,24 +1,25 @@
 ''' Contact Book Application'''
 from contact_book import Contacts
-import sqlite3
 
 if __name__=="__main__":
 
-	# CREATE AND CONNECT TO DATABASE
-	connection = sqlite3.connect('phonebook.db')
-	cursor = connection.cursor()
+	'''CREATING DATABASE '''
+	# create_connection('C:\Users\boria\Documents\Python Scripts\contact_book\contacts.db')
+	#
+	# conn.open()
+	# create_table_command = """
+	# CREATE TABLE IF NOT EXISTS
+	# contacts(id INTEGER PRIMARY KEY, firstname TEXT, lastname TEXT, phone_no INTEGER, email TEXT)
+	# """
+	# conn.execute(create_table_command)
+	# conn. close()
 
-	create_table_command = """
-	CREATE TABLE IF NOT EXISTS
-	contacts(id INTEGER PRIMARY KEY, firstname TEXT, lastname TEXT, phone_no INTEGER, email TEXT)
-	"""
-	cursor.execute(create_table_command)
+	'''APPLICATION INTERFACE'''
 
-	'''Application Interface'''
-
+	# while loop that starts the application
 	on = True
 	while on:
-		print("-------Contact Book----------")
+		print("-------CONTACT BOOK----------")
 		print("Choose an option:")
 		print("C - Create New Contact")
 		print("U - Update a contact")
@@ -28,6 +29,11 @@ if __name__=="__main__":
 		print("Q - Quit")
 
 		starter =input(' : ')
+		while starter.upper() not in ['C','U','D','L','B','Q']:
+			try:
+				starter =input(' : ')
+			except:
+				print("invalid input. Try again")
 
 		''' If user selects C to create contact'''
 
@@ -45,7 +51,7 @@ if __name__=="__main__":
 			# print(new_contact.first_name)
 
 
-		'''User ends Application'''
+		'''USER ENDS APPLICATION'''
 
 		if starter.upper() == "Q":
 			on = False
