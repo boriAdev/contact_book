@@ -1,24 +1,18 @@
 ''' Contact Book Application'''
-from contact_book import Contacts
+from contact_book import *
+from db_conn import *
 import sqlite3
+
 
 if __name__=="__main__":
 
-	# CREATE AND CONNECT TO DATABASE
-	connection = sqlite3.connect('phonebook.db')
-	cursor = connection.cursor()
+	''' CREATING CONNECTION TO DATABASE THEN TABLE'''
+	create_table()
 
-	create_table_command = """
-	CREATE TABLE IF NOT EXISTS
-	contacts(id INTEGER PRIMARY KEY, firstname TEXT, lastname TEXT, phone_no INTEGER, email TEXT)
-	"""
-	cursor.execute(create_table_command)
-
-	'''Application Interface'''
-
+	'''APPLICATION INTERFACE'''
 	on = True
 	while on:
-		print("-------Contact Book----------")
+		print("-------CONTACT BOOK----------")
 		print("Choose an option:")
 		print("C - Create New Contact")
 		print("U - Update a contact")
@@ -27,12 +21,11 @@ if __name__=="__main__":
 		print("B - Backup contacts in the Cloud")
 		print("Q - Quit")
 
-		starter =input(' : ')
+		starter =input(' Enter Input Here: ')
 
-		''' If user selects C to create contact'''
+		''' USER SELECTS C TO CREATE A NEW CONTACT'''
 
 		if starter.upper() =='C':
-
 			# USER INPUT
 			fname = input('Enter First Name: ')
 			lname = input('Enter Last Name: ')
@@ -42,10 +35,32 @@ if __name__=="__main__":
 			# CREATE NEW CONTACT
 			new_contact = Contacts()
 			new_contact.create_new_contact(fname,lname,phonenumber,emailaddress)
-			# print(new_contact.first_name)
+
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				# keep_going = True
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
 
 
-		'''User ends Application'''
+
+		if starter.upper() =='L':
+			pass
+
+		'''USER ENDS APPLICATION'''
 
 		if starter.upper() == "Q":
 			on = False
+
+
+
+		# '''USER ENDS APPLICATION'''
+
+	# elif starter.upper() == "Q":
+	# 		on = False
