@@ -1,22 +1,15 @@
 ''' Contact Book Application'''
-from contact_book import Contacts
+from contact_book import *
+from db_conn import *
+import sqlite3
+
 
 if __name__=="__main__":
 
-	'''CREATING DATABASE '''
-	# create_connection('C:\Users\boria\Documents\Python Scripts\contact_book\contacts.db')
-	#
-	# conn.open()
-	# create_table_command = """
-	# CREATE TABLE IF NOT EXISTS
-	# contacts(id INTEGER PRIMARY KEY, firstname TEXT, lastname TEXT, phone_no INTEGER, email TEXT)
-	# """
-	# conn.execute(create_table_command)
-	# conn. close()
+	''' CREATING CONNECTION TO DATABASE THEN TABLE'''
+	create_table()
 
 	'''APPLICATION INTERFACE'''
-
-	# while loop that starts the application
 	on = True
 	while on:
 		print("-------CONTACT BOOK----------")
@@ -28,17 +21,11 @@ if __name__=="__main__":
 		print("B - Backup contacts in the Cloud")
 		print("Q - Quit")
 
-		starter =input(' : ')
-		while starter.upper() not in ['C','U','D','L','B','Q']:
-			try:
-				starter =input(' : ')
-			except:
-				print("invalid input. Try again")
+		starter =input(' Enter Input Here: ')
 
-		''' If user selects C to create contact'''
+		''' USER SELECTS C TO CREATE A NEW CONTACT'''
 
 		if starter.upper() =='C':
-
 			# USER INPUT
 			fname = input('Enter First Name: ')
 			lname = input('Enter Last Name: ')
@@ -48,10 +35,32 @@ if __name__=="__main__":
 			# CREATE NEW CONTACT
 			new_contact = Contacts()
 			new_contact.create_new_contact(fname,lname,phonenumber,emailaddress)
-			# print(new_contact.first_name)
 
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				# keep_going = True
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
+
+
+
+		if starter.upper() =='L':
+			pass
 
 		'''USER ENDS APPLICATION'''
 
 		if starter.upper() == "Q":
 			on = False
+
+
+
+		# '''USER ENDS APPLICATION'''
+
+	# elif starter.upper() == "Q":
+	# 		on = False
