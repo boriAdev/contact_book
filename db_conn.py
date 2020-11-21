@@ -35,15 +35,7 @@ def create_table():
 	c.execute(create_table_command)
 	conn.close()
 
-# def insert_into_DB(first_name,last_name, phone_no, email_add):
-#     conn = create_connection('C:/Users/boria/Documents/Python Scripts/contact_book/contacts.db')
-#     # sql_insert = """ INSERT INTO contacts(firstname, lastname, phone_no, email) VALUES(?,?,?,?),
-# 	# (first_name, last_name, phone_no, email_add) """
-#     c = conn.cursor()
-#     # c.execute(sql_insert)
-# 	c.execute("INSERT INTO contacts(firstname, lastname, phone_no, email) VALUES(?,?,?,?)", (first_name, last_name, phone_no, email_add))
-#     conn.commit()
-#     conn.close()
+'''INSERTING USER INPUT INTO THE TABLE '''
 
 def insert_into_DB(first_name, last_name, phone_no, email_add):
 	conn = create_connection('C:/Users/boria/Documents/Python Scripts/contact_book/contacts.db')

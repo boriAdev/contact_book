@@ -1,4 +1,4 @@
-''' Contact Book Application'''
+''' CONTACT BOOK APPLICATION'''
 from contact_book import *
 from db_conn import *
 import sqlite3
@@ -6,7 +6,7 @@ import sqlite3
 
 if __name__=="__main__":
 
-	''' CREATING CONNECTION TO DATABASE THEN TABLE'''
+	''' CREATING AND CONNECTING TO DATABASE THEN TABLE'''
 	create_table()
 
 	'''APPLICATION INTERFACE'''
@@ -48,7 +48,7 @@ if __name__=="__main__":
 				else:
 					print('Wrong input, try again')
 
-
+		''' USER WANTS TO VIEW ALL CONTACTS'''
 
 		if starter.upper() =='L':
 			pass
@@ -57,10 +57,3 @@ if __name__=="__main__":
 
 		if starter.upper() == "Q":
 			on = False
-
-
-
-		# '''USER ENDS APPLICATION'''
-
-	# elif starter.upper() == "Q":
-	# 		on = False
