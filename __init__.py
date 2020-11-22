@@ -23,6 +23,10 @@ if __name__=="__main__":
 
 		starter =input(' Enter Input Here: ')
 
+		while starter.upper() not in {"C":"C", "U":"U", "D":"D", "L":"L", "B":"B", "Q":"Q"}:
+			print("INVALID INPUT, PLEASE TRY AGAIN")
+			break
+
 		''' USER SELECTS C TO CREATE A NEW CONTACT'''
 
 		if starter.upper() =='C':
@@ -38,7 +42,6 @@ if __name__=="__main__":
 
 			while True:
 				more = input("Do you want to perform another function? (Y/N): ")
-				# keep_going = True
 				if more.upper() == "Y":
 					break
 				elif more.upper() == "N":
@@ -48,10 +51,89 @@ if __name__=="__main__":
 				else:
 					print('Wrong input, try again')
 
+		'''USER WANTS TO UPDATE A SAVED CONTACT'''
+
+		if starter.upper() =='U':
+			
+			'''FUNCTION TO BE PERFORMED'''
+
+
+			'''LOGIC CONTINUATION'''
+
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
+
+
+		'''USER WANTS TO DELETE EXISTING CONTACT'''
+
+		if starter.upper() =='D':
+
+			'''FUNCTION TO BE PERFORMED'''
+
+
+			'''LOGIC CONTINUATION'''
+			
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
+
+
 		''' USER WANTS TO VIEW ALL CONTACTS'''
 
 		if starter.upper() =='L':
-			pass
+			
+			'''FUNCTION TO BE PERFORMED'''
+
+
+			'''LOGIC CONTINUATION'''
+			
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
+
+
+		'''USER WANTS TO BACKUP A CONTACT LIST TO THE CLOUD'''
+
+		if starter.upper() =='L':
+			
+			'''FUNCTION TO BE PERFORMED'''
+
+
+			'''LOGIC CONTINUATION'''
+			
+			while True:
+				more = input("Do you want to perform another function? (Y/N): ")
+				if more.upper() == "Y":
+					break
+				elif more.upper() == "N":
+					print('APPLICATION END!')
+					on = False
+					break
+				else:
+					print('Wrong input, try again')
+		
 
 		'''USER ENDS APPLICATION'''
 
