@@ -4,138 +4,144 @@ from db_conn import *
 import sqlite3
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
 
-	''' CREATING AND CONNECTING TO DATABASE THEN TABLE'''
-	create_table()
+    ''' CREATING AND CONNECTING TO DATABASE THEN TABLE'''
+    create_table()
 
-	'''APPLICATION INTERFACE'''
-	on = True
-	while on:
-		print("-------CONTACT BOOK----------")
-		print("Choose an option:")
-		print("C - Create New Contact")
-		print("U - Update a contact")
-		print("D - Delete a Contact")
-		print("L - List Contact")
-		print("B - Backup contacts in the Cloud")
-		print("Q - Quit")
+    '''APPLICATION INTERFACE'''
+    on = True
+    while on:
+        print("-------CONTACT BOOK----------")
+        print("Choose an option:")
+        print("C - Create New Contact")
+        print("U - Update a contact")
+        print("D - Delete a Contact")
+        print("L - List All Contacts")
+        print("B - Backup contacts in the Cloud")
+        print("Q - Quit")
 
-		starter =input(' Enter Input Here: ')
+        starter = input(' Enter Input Here: ')
 
-		while starter.upper() not in {"C":"C", "U":"U", "D":"D", "L":"L", "B":"B", "Q":"Q"}:
-			print("INVALID INPUT, PLEASE TRY AGAIN")
-			break
+        while starter.upper() not in {"C": "C", "U": "U", "D": "D", "L": "L", "B": "B", "Q": "Q"}:
+            print("INVALID INPUT, PLEASE TRY AGAIN")
+            break
 
-		''' USER SELECTS C TO CREATE A NEW CONTACT'''
+        ''' USER SELECTS C TO CREATE A NEW CONTACT'''
 
-		if starter.upper() =='C':
-			# USER INPUT
-			fname = input('Enter First Name: ')
-			lname = input('Enter Last Name: ')
-			phonenumber = input('Enter Phone Number: ')
-			emailaddress = input('Enter Email Address: ')
+        if starter.upper() == 'C':
+            # USER INPUT
+            fname = input('Enter First Name: ')
+            lname = input('Enter Last Name: ')
+            phonenumber = input('Enter Phone Number: ')
+            emailaddress = input('Enter Email Address: ')
 
-			# CREATE NEW CONTACT
-			new_contact = Contacts()
-			new_contact.create_new_contact(fname,lname,phonenumber,emailaddress)
+            # CREATE NEW CONTACT
+            new_contact = Contacts()
+            new_contact.create_new_contact(
+                fname, lname, phonenumber, emailaddress)
 
-			while True:
-				more = input("Do you want to perform another function? (Y/N): ")
-				if more.upper() == "Y":
-					break
-				elif more.upper() == "N":
-					print('APPLICATION END!')
-					on = False
-					break
-				else:
-					print('Wrong input, try again')
+            while True:
+                more = input(
+                    "Do you want to perform another function? (Y/N): ")
+                if more.upper() == "Y":
+                    break
+                elif more.upper() == "N":
+                    print('APPLICATION END!')
+                    on = False
+                    break
+                else:
+                    print('Wrong input, try again')
 
-		'''USER WANTS TO UPDATE A SAVED CONTACT'''
+        '''USER WANTS TO UPDATE A SAVED CONTACT'''
 
-		if starter.upper() =='U':
-			
-			'''FUNCTION TO BE PERFORMED'''
+        if starter.upper() == 'U':
 
+            '''FUNCTION TO BE PERFORMED'''
+            fname = input('Enter First Name: ')
+            lname = input('Enter Last Name: ')
 
-			'''LOGIC CONTINUATION'''
+            if fname or lname:
+                contact_to_update = Contacts()
+                contact_to_update.update_contact(fname, lname)
 
-			while True:
-				more = input("Do you want to perform another function? (Y/N): ")
-				if more.upper() == "Y":
-					break
-				elif more.upper() == "N":
-					print('APPLICATION END!')
-					on = False
-					break
-				else:
-					print('Wrong input, try again')
+            '''LOGIC CONTINUATION'''
 
+            while True:
+                more = input(
+                    "Do you want to perform another function? (Y/N): ")
+                if more.upper() == "Y":
+                    break
+                elif more.upper() == "N":
+                    print('APPLICATION END!')
+                    on = False
+                    break
+                else:
+                    print('Wrong input, try again')
 
-		'''USER WANTS TO DELETE EXISTING CONTACT'''
+        '''USER WANTS TO DELETE EXISTING CONTACT'''
 
-		if starter.upper() =='D':
+        if starter.upper() == 'D':
 
-			'''FUNCTION TO BE PERFORMED'''
+            '''FUNCTION TO BE PERFORMED'''
 
+            '''LOGIC CONTINUATION'''
 
-			'''LOGIC CONTINUATION'''
-			
-			while True:
-				more = input("Do you want to perform another function? (Y/N): ")
-				if more.upper() == "Y":
-					break
-				elif more.upper() == "N":
-					print('APPLICATION END!')
-					on = False
-					break
-				else:
-					print('Wrong input, try again')
+            while True:
+                more = input(
+                    "Do you want to perform another function? (Y/N): ")
+                if more.upper() == "Y":
+                    break
+                elif more.upper() == "N":
+                    print('APPLICATION END!')
+                    on = False
+                    break
+                else:
+                    print('Wrong input, try again')
 
+        ''' USER WANTS TO VIEW ALL CONTACTS'''
 
-		''' USER WANTS TO VIEW ALL CONTACTS'''
+        if starter.upper() == 'L':
 
-		if starter.upper() =='L':
-			
-			'''FUNCTION TO BE PERFORMED'''
+            '''FUNCTION TO BE PERFORMED'''
+            list_contacts = Contacts()
+            list_contacts.show_all_contacts()
 
+            '''LOGIC CONTINUATION'''
 
-			'''LOGIC CONTINUATION'''
-			
-			while True:
-				more = input("Do you want to perform another function? (Y/N): ")
-				if more.upper() == "Y":
-					break
-				elif more.upper() == "N":
-					print('APPLICATION END!')
-					on = False
-					break
-				else:
-					print('Wrong input, try again')
+            while True:
+                more = input(
+                    "Do you want to perform another function? (Y/N): ")
+                if more.upper() == "Y":
+                    break
+                elif more.upper() == "N":
+                    print('APPLICATION END!')
+                    on = False
+                    break
+                else:
+                    print('Wrong input, try again')
 
+        '''USER WANTS TO BACKUP A CONTACT LIST TO THE CLOUD'''
 
-		'''USER WANTS TO BACKUP A CONTACT LIST TO THE CLOUD'''
+        if starter.upper() == 'B':
 
-		if starter.upper() =='L':
-			
-			'''FUNCTION TO BE PERFORMED'''
+            '''FUNCTION TO BE PERFORMED'''
 
+            '''LOGIC CONTINUATION'''
 
-			'''LOGIC CONTINUATION'''
-			
-			while True:
-				more = input("Do you want to perform another function? (Y/N): ")
-				if more.upper() == "Y":
-					break
-				elif more.upper() == "N":
-					print('APPLICATION END!')
-					on = False
-					break
-				else:
-					print('Wrong input, try again')
-		
+            while True:
+                more = input(
+                    "Do you want to perform another function? (Y/N): ")
+                if more.upper() == "Y":
+                    break
+                elif more.upper() == "N":
+                    print('APPLICATION END!')
+                    on = False
+                    break
+                else:
+                    print('Wrong input, try again')
 
-		'''USER ENDS APPLICATION'''
+        '''USER ENDS APPLICATION'''
 
-		if starter.upper() == "Q":
-			on = False
+        if starter.upper() == "Q":
+            on = False
